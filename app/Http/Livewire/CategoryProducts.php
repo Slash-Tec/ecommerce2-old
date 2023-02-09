@@ -12,9 +12,9 @@ class CategoryProducts extends Component
 
     public function loadProducts()
     {
-        $this->products = $this->category->products;
+        $this->products = $this->category->products()->where('status', 2)->take(15)->get();
 
-        $this->emit('glider');
+        $this->emit('glider', $this->category->id);
     }
 
     public function render()
